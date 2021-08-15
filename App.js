@@ -1,14 +1,11 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { Dimensions, Modal, StyleSheet, Text, View } from "react-native";
-import MapView from "react-native-maps";
-
-const window = Dimensions.get("screen");
+import { Map } from "./components";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <MapView style={styles.map} />
+      <Map />
       <Modal animationType="slide" transparent={true} visible={true}>
         <View style={styles.center}>
           <View style={styles.modalView}>
@@ -35,10 +32,6 @@ const styles = StyleSheet.create({
       width: 0,
       height: 3,
     },
-  },
-  map: {
-    height: window.height,
-    width: window.width,
   },
   container: {
     flex: 1,
