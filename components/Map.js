@@ -6,7 +6,7 @@ const window = Dimensions.get("screen");
 
 const styles = StyleSheet.create({
   map: {
-    height: window.height,
+    height: window.height - 150,
     width: window.width,
   },
 });
