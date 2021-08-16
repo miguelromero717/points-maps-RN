@@ -10,11 +10,11 @@ const styles = StyleSheet.create({
   },
 });
 
-const Panel = ({onPressLeft, textLeft}) => {
+const Panel = ({onPressLeft, textLeft, tooglePointsFilter}) => {
   return (
     <View style={styles.panel}>
       <Button title={textLeft} onPress={onPressLeft} />
-      <Button title="Show/Hide" />
+      <Button title="Show/Hide" onPress={tooglePointsFilter}/>
     </View>
   );
 };

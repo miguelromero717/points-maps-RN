@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     }
 })
 
-export default ({ points }) => {
+export default ({ points, closeModal }) => {
   return (
     <>
       <View style={styles.list}>
@@ -28,7 +28,7 @@ export default ({ points }) => {
         />
       </View>
       <View style={styles.button}>
-          <Button title="Close"/>
+          <Button title="Close" onPress={closeModal}/>
       </View>
     </>
   );

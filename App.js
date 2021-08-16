@@ -8,6 +8,7 @@ export default function App() {
   const [name, setName] = useState("");
   const [visibilityFilter, setVisibilityFilter] = useState("new_point");
   const [visibility, setVisibility] = useState(false);
+  const [pointsFilter, setPointsFilter] = useState(true)
 
   const handleLongPress = ({ nativeEvent }) => {
     setPointTmp(nativeEvent.coordinate);
@@ -34,24 +35,26 @@ export default function App() {
     setVisibilityFilter('all_points')
   }
 
+  const tooglePointsFilter = () => setPointsFilter(!pointsFilter)
+
   return (
     <View style={styles.container}>
-      <Map onLongPress={handleLongPress} />
+      <Map onLongPress={handleLongPress} points={points} pointsFilter={pointsFilter}/>
       <Modal visibility={visibility}>
         {visibilityFilter === "new_point" ? (
-          <>
+          <View style={styles.form}>
             <Input
               title="Name"
               placeholder="Point name"
               onChangeText={handleChangeText}
             />
             <Button title="Acept" onPress={handleSubmit} />
-          </>
+          </View>
         ) : (
-          <List points={points}/>
+          <List points={points} closeModal={() => setVisibility(false)}/>
         )}
       </Modal>
-      <Panel onPressLeft={handleList} textLeft='List'/>
+      <Panel onPressLeft={handleList} textLeft='List' tooglePointsFilter={tooglePointsFilter}/>
     </View>
   );
 }
@@ -63,4 +66,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "flex-start",
   },
+  form: {
+    padding: 15
+  }
 });
