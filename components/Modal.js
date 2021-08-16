@@ -1,21 +1,22 @@
 import React from "react";
-import { StyleSheet, Modal, Text, View } from "react-native";
+import { StyleSheet, Modal, Text, View, Dimensions } from "react-native";
 
 const styles = StyleSheet.create({
   center: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: 'rgba(0,0,0,0.3)'
   },
   modalView: {
     backgroundColor: "#fff",
     borderRadius: 4,
-    padding: 20,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 3,
     },
+    minWidth: Dimensions.get('window').width - 200
   },
 });
 

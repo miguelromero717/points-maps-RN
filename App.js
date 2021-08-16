@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { StyleSheet, View, Button, Text } from "react-native";
-import { Input, Map, Modal, Panel } from "./components";
+import { Input, List, Map, Modal, Panel } from "./components";
 
 export default function App() {
   const [points, setPoints] = useState([]);
@@ -48,7 +48,7 @@ export default function App() {
             <Button title="Acept" onPress={handleSubmit} />
           </>
         ) : (
-          <Text>llalala</Text>
+          <List points={points}/>
         )}
       </Modal>
       <Panel onPressLeft={handleList} textLeft='List'/>
