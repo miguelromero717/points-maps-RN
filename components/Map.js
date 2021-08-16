@@ -11,8 +11,8 @@ const styles = StyleSheet.create({
   },
 });
 
-const Map = () => {
-  return <MapView style={styles.map} />;
+const Map = ({ onLongPress }) => {
+  return <MapView style={styles.map} onLongPress={onLongPress} />;
 };
 
 export default Map;

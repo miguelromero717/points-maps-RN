@@ -1,7 +1,5 @@
 import React from "react";
-import { Dimensions, StyleSheet, Modal, Text, View } from "react-native";
-
-const window = Dimensions.get("screen");
+import { StyleSheet, Modal, Text, View } from "react-native";
 
 const styles = StyleSheet.create({
   center: {
@@ -23,7 +21,7 @@ const styles = StyleSheet.create({
 
 const ModalCustom = () => {
   return (
-    <Modal animationType="slide" transparent={true} visible={true}>
+    <Modal animationType="slide" transparent={true} visible={false}>
       <View style={styles.center}>
         <View style={styles.modalView}>
           <Text>Hola Mundo</Text>
