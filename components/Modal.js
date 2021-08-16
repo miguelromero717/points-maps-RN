@@ -19,13 +19,11 @@ const styles = StyleSheet.create({
   },
 });
 
-const ModalCustom = () => {
+const ModalCustom = ({ children, visibility }) => {
   return (
-    <Modal animationType="slide" transparent={true} visible={false}>
+    <Modal animationType="slide" transparent={true} visible={visibility}>
       <View style={styles.center}>
-        <View style={styles.modalView}>
-          <Text>Hola Mundo</Text>
-        </View>
+        <View style={styles.modalView}>{children}</View>
       </View>
     </Modal>
   );

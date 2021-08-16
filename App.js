@@ -1,19 +1,57 @@
 import React, { useState } from "react";
-import { StyleSheet, View } from "react-native";
-import { Map, Modal, Panel } from "./components";
+import { StyleSheet, View, Button, Text } from "react-native";
+import { Input, Map, Modal, Panel } from "./components";
 
 export default function App() {
   const [points, setPoints] = useState([]);
+  const [pointTmp, setPointTmp] = useState({});
+  const [name, setName] = useState("");
+  const [visibilityFilter, setVisibilityFilter] = useState("new_point");
+  const [visibility, setVisibility] = useState(false);
 
   const handleLongPress = ({ nativeEvent }) => {
-    setPoints([...points, { coordinate: nativeEvent.coordinate }]);
+    setPointTmp(nativeEvent.coordinate);
+    setVisibility(true)
+    setVisibilityFilter('new_point')
   };
+
+  const handleChangeText = (text) => {
+    setName(text);
+  };
+
+  const handleSubmit = () => {
+    const newPoint = {
+      coordinate: pointTmp,
+      name: name,
+    };
+    setPoints([...points, newPoint]);
+    setVisibility(false);
+    setName("");
+  };
+
+  const handleList = () => {
+    setVisibility(true)
+    setVisibilityFilter('all_points')
+  }
 
   return (
     <View style={styles.container}>
       <Map onLongPress={handleLongPress} />
-      <Modal />
-      <Panel />
+      <Modal visibility={visibility}>
+        {visibilityFilter === "new_point" ? (
+          <>
+            <Input
+              title="Name"
+              placeholder="Point name"
+              onChangeText={handleChangeText}
+            />
+            <Button title="Acept" onPress={handleSubmit} />
+          </>
+        ) : (
+          <Text>llalala</Text>
+        )}
+      </Modal>
+      <Panel onPressLeft={handleList} textLeft='List'/>
     </View>
   );
 }

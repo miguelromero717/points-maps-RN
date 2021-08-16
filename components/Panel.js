@@ -10,10 +10,10 @@ const styles = StyleSheet.create({
   },
 });
 
-const Panel = () => {
+const Panel = ({onPressLeft, textLeft}) => {
   return (
     <View style={styles.panel}>
-      <Button title="List" />
+      <Button title={textLeft} onPress={onPressLeft} />
       <Button title="Show/Hide" />
     </View>
   );
